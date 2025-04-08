@@ -24,12 +24,12 @@ class DriverCreationForm(UserCreationForm):
         if (not license_number[:3].isalpha()
                 or not license_number[3:].isdigit()):
             raise ValidationError("This license number must starts with "
-                                  "3 numbers and ends with 5 letters.")
+                                  "3 letters and ends with 5 numbers.")
         return license_number
 
 
 class DriverLicenseUpdateForm(forms.ModelForm):
-    class Meta(forms.ModelForm):
+    class Meta:
         model = Driver
         fields = ("license_number",)
 
@@ -40,10 +40,10 @@ class DriverLicenseUpdateForm(forms.ModelForm):
         if len(license_number) != 8:
             raise ValidationError("This license number "
                                   "must have 8 characters.")
-        if (not license_number[3:].isdigit()
-                or not license_number[:3].isalpha()):
+        if (not license_number[:3].isalpha()
+                or not license_number[3:].isdigit()):
             raise ValidationError("This license number must starts with "
-                                  "3 numbers and ends with 5 letters.")
+                                  "3 letters and ends with 5 numbers.")
         return license_number
 
 
